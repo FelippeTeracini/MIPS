@@ -4,9 +4,9 @@ use ieee.numeric_std.all;
 
 entity TOP_LEVEL_R is
    generic (
-          addrWidth: natural := 32
-			 dataWidth: natural := 32
-			 memoryAddrWidth:  natural := 6
+          addrWidth: natural := 32;
+			 dataWidth: natural := 32;
+			 memoryAddrWidth:  natural := 6;
 			 bancoAddrWidth: natural := 5
     );
    port (
@@ -16,19 +16,22 @@ entity TOP_LEVEL_R is
 			 -- PC --
 			 enable_pc       : in std_logic;
 			 reset_pc        : in std_logic;
-			 B_somador       : in std_logic_vector (addrWidth-1 DOWNTO 0);
 			 
 			 -- Banco de Registradores --
 			 escreveC        : in std_logic;
 			 
 			 -- ULA --
-			 funct           : in std_logic_vector (5 downto 0);
-			 Saida           : out std_logic_vector((dataWidth-1) downto 0)
+			 Saida           : out std_logic_vector((dataWidth-1) downto 0);
+			 SaidaA1			: out std_logic_vector((dataWidth-1) downto 0);			
+			 SaidaB1			: out std_logic_vector((dataWidth-1) downto 0);
+			 SaidaROM         : out std_logic_vector((addrWidth-1) downto 0);
+			 SaidaFunct : out std_logic_vector(5 downto 0)
     );
 end entity;
 
 architecture assincrona of TOP_LEVEL_R is
 
+	signal funct: std_logic_vector(5 downto 0);
 	signal outPC: std_logic_vector(addrWidth-1 DOWNTO 0);
 	signal outROM, outULA, saidaABanco, saidaBBanco: std_logic_vector (dataWidth-1 DOWNTO 0);
 
@@ -41,15 +44,15 @@ begin
    port map(
 			 Clk => Clk,
 			 enable_pc => enable_pc,
-			 B_somador => B_somador,
+			 B_somador => x"00000004",
 			 reset_pc => reset_pc,
           Addr => outPC
    );
 
 	ROM : entity work.ROM_MIPS 
 	generic map(
-          dataWidth => dataWidth
-          addrWidth => addrWidth
+          dataWidth => dataWidth,
+          addrWidth => addrWidth,
           memoryAddrWidth => memoryAddrWidth 
 	)
    port map( 
@@ -90,7 +93,13 @@ begin
 			 --- OUT ---
 			 saida => outULA
 	);
-		
-	Addr <= outPC;
+	
+	funct <= outROM(5 downto 0);
+	
+	SaidaFunct <= funct;
+	Saida <= outULA;
+	SaidaA1 <= saidaABanco;
+	SaidaB1 <= saidaBBanco;
+	SaidaROM <= outROM;
 	 
 end architecture;

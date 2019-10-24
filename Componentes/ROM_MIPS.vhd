@@ -1,3 +1,4 @@
+library IEEE;
 use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;
 
@@ -17,7 +18,7 @@ architecture assincrona OF ROM_MIPS IS
     signal memROM: blocoMemoria;
     attribute ram_init_file : string;
     attribute ram_init_file of memROM:
-    signal is "ROMcontent.mif";
+    signal is "test.mif";
 
 -- Utiliza uma quantidade menor de endereços locais:
      signal EnderecoLocal : std_logic_vector(memoryAddrWidth-1 downto 0);

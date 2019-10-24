@@ -1,0 +1,25 @@
+Quartus Prime Archive log --	C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/R/Instrucao_R.qarlog
+
+Archive:	C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/R/Instrucao_R.qar
+Date:		Thu Oct 24 16:46:53 2019
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/Componentes/PC_MIPS.vhd
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/Componentes/ROM_MIPS.vhd
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/Componentes/TOP_LEVEL_R.vhd
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/Componentes/ULA_MIPS.vhd
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/Componentes/bancoRegistradores_MIPS.vhd
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/R/Instrucao_R.qpf
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/R/Instrucao_R.qsf
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/R/Waveform.vwf
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/R/Waveform1.vwf
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/R/Waveform2.vwf
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/R/Waveform3.vwf
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/Relogio_VHDL/Componentes/registrador.vhd
+C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/Relogio_VHDL/Componentes/somadorGenerico.vhd
+c:/intelfpga_lite/17.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 14 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

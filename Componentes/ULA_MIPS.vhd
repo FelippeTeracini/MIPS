@@ -18,7 +18,7 @@ entity ULA_MIPS is
 	
 end ULA_MIPS;
 
-Architecture comportamento of ULA is
+Architecture comportamento of ULA_MIPS is
 
 	signal resultado: integer;
 	signal ai : integer;
