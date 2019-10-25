@@ -1,10 +1,11 @@
-|TOP_LEVEL_R
-Clk => pc_mips:PC.Clk
-Clk => rom_mips:ROM.clk
-Clk => bancoregistradores_mips:BANCO.clk
-enable_pc => pc_mips:PC.enable_pc
-reset_pc => pc_mips:PC.reset_pc
-escreveC => bancoregistradores_mips:BANCO.escreveC
+|TOP_LEVEL_TESTE
+CLOCK_50 => edgedetector:EDGE1.clk
+CLOCK_50 => edgedetector:EDGE2.clk
+CLOCK_50 => rom_mips:ROM.clk
+CLOCK_50 => bancoregistradores_mips:BANCO.clk
+enable_pc => ~NO_FANOUT~
+reset_pc => ~NO_FANOUT~
+escreveC => ~NO_FANOUT~
 Saida[0] << ula_mips:ULA.saida[0]
 Saida[1] << ula_mips:ULA.saida[1]
 Saida[2] << ula_mips:ULA.saida[2]
@@ -133,15 +134,78 @@ SaidaROM[28] << rom_mips:ROM.Dado[28]
 SaidaROM[29] << rom_mips:ROM.Dado[29]
 SaidaROM[30] << rom_mips:ROM.Dado[30]
 SaidaROM[31] << rom_mips:ROM.Dado[31]
-SaidaFunct[0] << rom_mips:ROM.Dado[0]
-SaidaFunct[1] << rom_mips:ROM.Dado[1]
-SaidaFunct[2] << rom_mips:ROM.Dado[2]
-SaidaFunct[3] << rom_mips:ROM.Dado[3]
-SaidaFunct[4] << rom_mips:ROM.Dado[4]
-SaidaFunct[5] << rom_mips:ROM.Dado[5]
+SaidaFunct[0] << SW[0].DB_MAX_OUTPUT_PORT_TYPE
+SaidaFunct[1] << SW[1].DB_MAX_OUTPUT_PORT_TYPE
+SaidaFunct[2] << SW[2].DB_MAX_OUTPUT_PORT_TYPE
+SaidaFunct[3] << SW[3].DB_MAX_OUTPUT_PORT_TYPE
+SaidaFunct[4] << SW[4].DB_MAX_OUTPUT_PORT_TYPE
+SaidaFunct[5] << SW[5].DB_MAX_OUTPUT_PORT_TYPE
+KEY[0] => ~NO_FANOUT~
+KEY[1] => ~NO_FANOUT~
+KEY[2] => edgedetector:EDGE2.entrada
+KEY[3] => edgedetector:EDGE1.entrada
+SW[0] => ula_mips:ULA.instrucao[0]
+SW[0] => SaidaFunct[0].DATAIN
+SW[1] => ula_mips:ULA.instrucao[1]
+SW[1] => SaidaFunct[1].DATAIN
+SW[2] => ula_mips:ULA.instrucao[2]
+SW[2] => SaidaFunct[2].DATAIN
+SW[3] => ula_mips:ULA.instrucao[3]
+SW[3] => SaidaFunct[3].DATAIN
+SW[4] => ula_mips:ULA.instrucao[4]
+SW[4] => SaidaFunct[4].DATAIN
+SW[5] => ula_mips:ULA.instrucao[5]
+SW[5] => SaidaFunct[5].DATAIN
+SW[6] => ~NO_FANOUT~
+SW[7] => ~NO_FANOUT~
+SW[8] => ~NO_FANOUT~
+SW[9] => ~NO_FANOUT~
+SW[10] => ~NO_FANOUT~
+SW[11] => ~NO_FANOUT~
+SW[12] => ~NO_FANOUT~
+SW[13] => ~NO_FANOUT~
+SW[14] => ~NO_FANOUT~
+SW[15] => ~NO_FANOUT~
+SW[16] => bancoregistradores_mips:BANCO.escreveC
+SW[17] => pc_mips:PC.enable_pc
+HEX0[0] << conversorhex7seg:HEX_0.saida7seg[0]
+HEX0[1] << conversorhex7seg:HEX_0.saida7seg[1]
+HEX0[2] << conversorhex7seg:HEX_0.saida7seg[2]
+HEX0[3] << conversorhex7seg:HEX_0.saida7seg[3]
+HEX0[4] << conversorhex7seg:HEX_0.saida7seg[4]
+HEX0[5] << conversorhex7seg:HEX_0.saida7seg[5]
+HEX0[6] << conversorhex7seg:HEX_0.saida7seg[6]
+HEX1[0] << conversorhex7seg:HEX_1.saida7seg[0]
+HEX1[1] << conversorhex7seg:HEX_1.saida7seg[1]
+HEX1[2] << conversorhex7seg:HEX_1.saida7seg[2]
+HEX1[3] << conversorhex7seg:HEX_1.saida7seg[3]
+HEX1[4] << conversorhex7seg:HEX_1.saida7seg[4]
+HEX1[5] << conversorhex7seg:HEX_1.saida7seg[5]
+HEX1[6] << conversorhex7seg:HEX_1.saida7seg[6]
+HEX2[0] << conversorhex7seg:HEX_2.saida7seg[0]
+HEX2[1] << conversorhex7seg:HEX_2.saida7seg[1]
+HEX2[2] << conversorhex7seg:HEX_2.saida7seg[2]
+HEX2[3] << conversorhex7seg:HEX_2.saida7seg[3]
+HEX2[4] << conversorhex7seg:HEX_2.saida7seg[4]
+HEX2[5] << conversorhex7seg:HEX_2.saida7seg[5]
+HEX2[6] << conversorhex7seg:HEX_2.saida7seg[6]
 
 
-|TOP_LEVEL_R|PC_MIPS:PC
+|TOP_LEVEL_TESTE|edgeDetector:EDGE1
+clk => saidaQ.CLK
+entrada => saida.IN1
+entrada => saidaQ.DATAIN
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TOP_LEVEL_TESTE|edgeDetector:EDGE2
+clk => saidaQ.CLK
+entrada => saida.IN1
+entrada => saidaQ.DATAIN
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TOP_LEVEL_TESTE|PC_MIPS:PC
 Clk => registrador:PC.clk
 enable_pc => registrador:PC.enable
 B_somador[0] => somadorgenerico:Somador.entradaB[0]
@@ -211,7 +275,7 @@ Addr[30] <= registrador:PC.output[30]
 Addr[31] <= registrador:PC.output[31]
 
 
-|TOP_LEVEL_R|PC_MIPS:PC|somadorGenerico:Somador
+|TOP_LEVEL_TESTE|PC_MIPS:PC|somadorGenerico:Somador
 entradaA[0] => Add0.IN32
 entradaA[1] => Add0.IN31
 entradaA[2] => Add0.IN30
@@ -310,7 +374,7 @@ saida[30] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 saida[31] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|TOP_LEVEL_R|PC_MIPS:PC|registrador:PC
+|TOP_LEVEL_TESTE|PC_MIPS:PC|registrador:PC
 clk => output[0]~reg0.CLK
 clk => output[1]~reg0.CLK
 clk => output[2]~reg0.CLK
@@ -473,7 +537,7 @@ output[30] <= output[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 output[31] <= output[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|TOP_LEVEL_R|ROM_MIPS:ROM
+|TOP_LEVEL_TESTE|ROM_MIPS:ROM
 clk => ~NO_FANOUT~
 Endereco[0] => ~NO_FANOUT~
 Endereco[1] => ~NO_FANOUT~
@@ -541,7 +605,7 @@ Dado[30] <= memROM.DATAOUT30
 Dado[31] <= memROM.DATAOUT31
 
 
-|TOP_LEVEL_R|bancoRegistradores_MIPS:BANCO
+|TOP_LEVEL_TESTE|bancoRegistradores_MIPS:BANCO
 clk => registrador~37.CLK
 clk => registrador~0.CLK
 clk => registrador~1.CLK
@@ -743,7 +807,7 @@ saidaB[30] <= saidaB.DB_MAX_OUTPUT_PORT_TYPE
 saidaB[31] <= saidaB.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|TOP_LEVEL_R|ULA_MIPS:ULA
+|TOP_LEVEL_TESTE|ULA_MIPS:ULA
 A[0] => Add0.IN33
 A[0] => Add1.IN64
 A[1] => Add0.IN32
@@ -1125,5 +1189,260 @@ saida[28] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
 saida[29] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
 saida[30] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
 saida[31] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TOP_LEVEL_TESTE|conversorHex7Seg:HEX_0
+dadoHex[0] => Equal0.IN3
+dadoHex[0] => Equal1.IN0
+dadoHex[0] => Equal2.IN3
+dadoHex[0] => Equal3.IN1
+dadoHex[0] => Equal4.IN3
+dadoHex[0] => Equal5.IN1
+dadoHex[0] => Equal6.IN3
+dadoHex[0] => Equal7.IN2
+dadoHex[0] => Equal8.IN3
+dadoHex[0] => Equal9.IN1
+dadoHex[0] => Equal10.IN3
+dadoHex[0] => Equal11.IN2
+dadoHex[0] => Equal12.IN3
+dadoHex[0] => Equal13.IN2
+dadoHex[0] => Equal14.IN3
+dadoHex[0] => Equal15.IN3
+dadoHex[1] => Equal0.IN2
+dadoHex[1] => Equal1.IN3
+dadoHex[1] => Equal2.IN0
+dadoHex[1] => Equal3.IN0
+dadoHex[1] => Equal4.IN2
+dadoHex[1] => Equal5.IN3
+dadoHex[1] => Equal6.IN1
+dadoHex[1] => Equal7.IN1
+dadoHex[1] => Equal8.IN2
+dadoHex[1] => Equal9.IN3
+dadoHex[1] => Equal10.IN1
+dadoHex[1] => Equal11.IN1
+dadoHex[1] => Equal12.IN2
+dadoHex[1] => Equal13.IN3
+dadoHex[1] => Equal14.IN2
+dadoHex[1] => Equal15.IN2
+dadoHex[2] => Equal0.IN1
+dadoHex[2] => Equal1.IN2
+dadoHex[2] => Equal2.IN2
+dadoHex[2] => Equal3.IN3
+dadoHex[2] => Equal4.IN0
+dadoHex[2] => Equal5.IN0
+dadoHex[2] => Equal6.IN0
+dadoHex[2] => Equal7.IN0
+dadoHex[2] => Equal8.IN1
+dadoHex[2] => Equal9.IN2
+dadoHex[2] => Equal10.IN2
+dadoHex[2] => Equal11.IN3
+dadoHex[2] => Equal12.IN1
+dadoHex[2] => Equal13.IN1
+dadoHex[2] => Equal14.IN1
+dadoHex[2] => Equal15.IN1
+dadoHex[3] => Equal0.IN0
+dadoHex[3] => Equal1.IN1
+dadoHex[3] => Equal2.IN1
+dadoHex[3] => Equal3.IN2
+dadoHex[3] => Equal4.IN1
+dadoHex[3] => Equal5.IN2
+dadoHex[3] => Equal6.IN2
+dadoHex[3] => Equal7.IN3
+dadoHex[3] => Equal8.IN0
+dadoHex[3] => Equal9.IN0
+dadoHex[3] => Equal10.IN0
+dadoHex[3] => Equal11.IN0
+dadoHex[3] => Equal12.IN0
+dadoHex[3] => Equal13.IN0
+dadoHex[3] => Equal14.IN0
+dadoHex[3] => Equal15.IN0
+apaga => saida7seg.IN0
+apaga => saida7seg.IN0
+negativo => saida7seg.IN1
+negativo => saida7seg.IN1
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+saida7seg[0] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[1] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[2] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[3] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[4] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[5] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[6] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TOP_LEVEL_TESTE|conversorHex7Seg:HEX_1
+dadoHex[0] => Equal0.IN3
+dadoHex[0] => Equal1.IN0
+dadoHex[0] => Equal2.IN3
+dadoHex[0] => Equal3.IN1
+dadoHex[0] => Equal4.IN3
+dadoHex[0] => Equal5.IN1
+dadoHex[0] => Equal6.IN3
+dadoHex[0] => Equal7.IN2
+dadoHex[0] => Equal8.IN3
+dadoHex[0] => Equal9.IN1
+dadoHex[0] => Equal10.IN3
+dadoHex[0] => Equal11.IN2
+dadoHex[0] => Equal12.IN3
+dadoHex[0] => Equal13.IN2
+dadoHex[0] => Equal14.IN3
+dadoHex[0] => Equal15.IN3
+dadoHex[1] => Equal0.IN2
+dadoHex[1] => Equal1.IN3
+dadoHex[1] => Equal2.IN0
+dadoHex[1] => Equal3.IN0
+dadoHex[1] => Equal4.IN2
+dadoHex[1] => Equal5.IN3
+dadoHex[1] => Equal6.IN1
+dadoHex[1] => Equal7.IN1
+dadoHex[1] => Equal8.IN2
+dadoHex[1] => Equal9.IN3
+dadoHex[1] => Equal10.IN1
+dadoHex[1] => Equal11.IN1
+dadoHex[1] => Equal12.IN2
+dadoHex[1] => Equal13.IN3
+dadoHex[1] => Equal14.IN2
+dadoHex[1] => Equal15.IN2
+dadoHex[2] => Equal0.IN1
+dadoHex[2] => Equal1.IN2
+dadoHex[2] => Equal2.IN2
+dadoHex[2] => Equal3.IN3
+dadoHex[2] => Equal4.IN0
+dadoHex[2] => Equal5.IN0
+dadoHex[2] => Equal6.IN0
+dadoHex[2] => Equal7.IN0
+dadoHex[2] => Equal8.IN1
+dadoHex[2] => Equal9.IN2
+dadoHex[2] => Equal10.IN2
+dadoHex[2] => Equal11.IN3
+dadoHex[2] => Equal12.IN1
+dadoHex[2] => Equal13.IN1
+dadoHex[2] => Equal14.IN1
+dadoHex[2] => Equal15.IN1
+dadoHex[3] => Equal0.IN0
+dadoHex[3] => Equal1.IN1
+dadoHex[3] => Equal2.IN1
+dadoHex[3] => Equal3.IN2
+dadoHex[3] => Equal4.IN1
+dadoHex[3] => Equal5.IN2
+dadoHex[3] => Equal6.IN2
+dadoHex[3] => Equal7.IN3
+dadoHex[3] => Equal8.IN0
+dadoHex[3] => Equal9.IN0
+dadoHex[3] => Equal10.IN0
+dadoHex[3] => Equal11.IN0
+dadoHex[3] => Equal12.IN0
+dadoHex[3] => Equal13.IN0
+dadoHex[3] => Equal14.IN0
+dadoHex[3] => Equal15.IN0
+apaga => saida7seg.IN0
+apaga => saida7seg.IN0
+negativo => saida7seg.IN1
+negativo => saida7seg.IN1
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+saida7seg[0] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[1] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[2] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[3] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[4] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[5] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[6] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TOP_LEVEL_TESTE|conversorHex7Seg:HEX_2
+dadoHex[0] => Equal0.IN3
+dadoHex[0] => Equal1.IN0
+dadoHex[0] => Equal2.IN3
+dadoHex[0] => Equal3.IN1
+dadoHex[0] => Equal4.IN3
+dadoHex[0] => Equal5.IN1
+dadoHex[0] => Equal6.IN3
+dadoHex[0] => Equal7.IN2
+dadoHex[0] => Equal8.IN3
+dadoHex[0] => Equal9.IN1
+dadoHex[0] => Equal10.IN3
+dadoHex[0] => Equal11.IN2
+dadoHex[0] => Equal12.IN3
+dadoHex[0] => Equal13.IN2
+dadoHex[0] => Equal14.IN3
+dadoHex[0] => Equal15.IN3
+dadoHex[1] => Equal0.IN2
+dadoHex[1] => Equal1.IN3
+dadoHex[1] => Equal2.IN0
+dadoHex[1] => Equal3.IN0
+dadoHex[1] => Equal4.IN2
+dadoHex[1] => Equal5.IN3
+dadoHex[1] => Equal6.IN1
+dadoHex[1] => Equal7.IN1
+dadoHex[1] => Equal8.IN2
+dadoHex[1] => Equal9.IN3
+dadoHex[1] => Equal10.IN1
+dadoHex[1] => Equal11.IN1
+dadoHex[1] => Equal12.IN2
+dadoHex[1] => Equal13.IN3
+dadoHex[1] => Equal14.IN2
+dadoHex[1] => Equal15.IN2
+dadoHex[2] => Equal0.IN1
+dadoHex[2] => Equal1.IN2
+dadoHex[2] => Equal2.IN2
+dadoHex[2] => Equal3.IN3
+dadoHex[2] => Equal4.IN0
+dadoHex[2] => Equal5.IN0
+dadoHex[2] => Equal6.IN0
+dadoHex[2] => Equal7.IN0
+dadoHex[2] => Equal8.IN1
+dadoHex[2] => Equal9.IN2
+dadoHex[2] => Equal10.IN2
+dadoHex[2] => Equal11.IN3
+dadoHex[2] => Equal12.IN1
+dadoHex[2] => Equal13.IN1
+dadoHex[2] => Equal14.IN1
+dadoHex[2] => Equal15.IN1
+dadoHex[3] => Equal0.IN0
+dadoHex[3] => Equal1.IN1
+dadoHex[3] => Equal2.IN1
+dadoHex[3] => Equal3.IN2
+dadoHex[3] => Equal4.IN1
+dadoHex[3] => Equal5.IN2
+dadoHex[3] => Equal6.IN2
+dadoHex[3] => Equal7.IN3
+dadoHex[3] => Equal8.IN0
+dadoHex[3] => Equal9.IN0
+dadoHex[3] => Equal10.IN0
+dadoHex[3] => Equal11.IN0
+dadoHex[3] => Equal12.IN0
+dadoHex[3] => Equal13.IN0
+dadoHex[3] => Equal14.IN0
+dadoHex[3] => Equal15.IN0
+apaga => saida7seg.IN0
+apaga => saida7seg.IN0
+negativo => saida7seg.IN1
+negativo => saida7seg.IN1
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+overFlow => saida7seg.OUTPUTSELECT
+saida7seg[0] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[1] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[2] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[3] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[4] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[5] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
+saida7seg[6] <= saida7seg.DB_MAX_OUTPUT_PORT_TYPE
 
 

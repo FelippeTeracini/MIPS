@@ -26,7 +26,7 @@ Architecture comportamento of ULA_MIPS is
 
 begin
 
- process(A,B,instrucao)
+ process(all)
  
  begin
 	ai <= to_integer(unsigned(A));
