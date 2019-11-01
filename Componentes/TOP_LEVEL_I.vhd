@@ -17,9 +17,10 @@ entity TOP_LEVEL_I is
 			 enable_pc       : in std_logic;
 			 reset_pc        : in std_logic;
 			 
-			 -- MUX_END3 --
+			 -- MUX --
 			 muxRT_RD        : in std_logic;
 			 muxRT_Imediato  : in std_logic;
+			 muxULA_RAM      : in std_logic;
 			 
 			 -- Banco de Registradores --
 			 escreveC        : in std_logic;
@@ -30,15 +31,23 @@ entity TOP_LEVEL_I is
 			 SaidaB1			: out std_logic_vector((dataWidth-1) downto 0);
 			 SaidaROM         : out std_logic_vector((addrWidth-1) downto 0);
 			 SaidaFunct : out std_logic_vector(5 downto 0)
+			 
+			 -- RAM --
+			 we              : in std_logic;
+			 
+			 -- UC --
+			 beq             : in std_logic;
+			 
     );
 end entity;
 
 architecture assincrona of TOP_LEVEL_I is
 
+	signal zero : std_logic_vector(0 downto 0);
 	signal funct: std_logic_vector(5 downto 0);
 	signal outMUX_END3 : std_logic_vector(4 downto 0);
-	signal outPC: std_logic_vector(addrWidth-1 DOWNTO 0);
-	signal outROM, outExtensor, outMUX_BULA, outULA, saidaABanco, saidaBBanco: std_logic_vector (dataWidth-1 DOWNTO 0);
+	signal outPC, outSomador, outSomadorExt, outMUX_PCIM: std_logic_vector(addrWidth-1 DOWNTO 0);
+	signal outROM, outExtensor, outLShift, outMUX_BULA, outULA, saidaABanco, saidaBBanco, outRAM, outMUX_ULARAM: std_logic_vector (dataWidth-1 DOWNTO 0);
 
 begin
 
@@ -51,7 +60,9 @@ begin
 			 enable_pc => enable_pc,
 			 B_somador => x"00000004",
 			 reset_pc => reset_pc,
-          Addr => outPC
+			 Data => outMUX_PCIM,
+          Addr => outPC,
+			 OutSomador => outSomador
    );
 
 	ROM : entity work.ROM_MIPS 
@@ -105,6 +116,37 @@ begin
 			 saida => outExtensor
    );
 	
+	LShift : entity work.left_shifter
+	generic map(
+          larguraDados => dataWidth,
+			 shift_n => 2
+   )
+   port map(
+          entrada => outExtensor,
+			 saida => outLShift
+   );
+	
+	SomadorExt : entity work.somadorGenerico
+	generic map(
+          larguraDados => dataWidth
+	)
+   port map( 
+			 entradaA => outSomador,
+			 entradaB => outLShift,
+			 saida => outSomadorExt
+	);
+	
+	MUX_PCIM : entity work.MUX2_1
+	generic map(
+          N => dataWidth
+	)
+   port map( 
+			 A	=> outSomador,
+			 B	=> outSomadorExt,
+			 Sel => beq and zero(0),
+			 Y	=> outMUX_PCIM
+	);
+	
 	MUX_BULA : entity work.MUX2_1
 	generic map(
           N => dataWidth
@@ -127,7 +169,33 @@ begin
 			 instrucao => funct,
 				
 			 --- OUT ---
-			 saida => outULA
+			 saida => outULA,
+			 zero => zero
+	);
+	
+	RAM : entity work.RAM_MIPS
+	generic map(
+		    dataWidth => dataWidth,
+          addrWidth => addrWidth,
+			 memoryAddrWidth => memoryAddrWidth
+	)
+	port map(
+			 addr => outULA;
+			 we => we,
+			 clk => Clk,
+			 dado_in => outMUX_BULA,
+			 dado_out => outRAM
+	);
+	
+	MUX_ULARAM : entity work.MUX2_1
+	generic map(
+          N => dataWidth
+	)
+   port map( 
+			 A	=> outULA,
+			 B	=> outRAM,
+			 Sel => muxULA_RAM,
+			 Y	=> outMUX_ULARAM
 	);
 	
 	funct <= outROM(5 downto 0);

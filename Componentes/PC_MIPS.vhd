@@ -11,7 +11,9 @@ entity PC_MIPS is
 			 enable_pc : in std_logic;
 			 B_somador: in std_logic_vector (addrWidth-1 DOWNTO 0);
 			 reset_pc: in std_logic;
-          Addr : out std_logic_vector (addrWidth-1 DOWNTO 0)
+			 Data : in std_logic_vector ((addrWidth-1) DOWNTO 0);
+          Addr : out std_logic_vector (addrWidth-1 DOWNTO 0);
+			 OutSomador : out std_logic_vector ((addrWidth-1) DOWNTO 0)
     );
 end entity;
 
@@ -33,10 +35,11 @@ begin
 			clk => Clk,
 			enable => enable_pc,
 			reset	=> reset_pc,
-			data => outSomador,
+			data => Data,
 			output => outPC
 		);
 		
 	Addr <= outPC;
+	OutSomador <= outSomador;
 	 
 end architecture;

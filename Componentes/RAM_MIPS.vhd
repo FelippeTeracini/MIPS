@@ -5,7 +5,8 @@ use ieee.numeric_std.all;
 entity RAM_MIPS is
    generic (
          dataWidth: natural := 32;
-         addrWidth: natural := 32
+         addrWidth: natural := 32;
+			memoryAddrWidth: natural := 8
     );
     port
     (
@@ -20,18 +21,18 @@ end entity;
 architecture rtl of RAM_MIPS is
     -- Build a 2-D array type for the RAM
     subtype word_t is std_logic_vector(dataWidth-1 downto 0);
-    type memory_t is array((2**addrWidth-1) downto 0) of word_t;
+    type memory_t is array((2**memoryAddrWidth-1) downto 0) of word_t;
 
     -- Declare the RAM signal.
-    signal ram : memory_t;
+    signal ram_s : memory_t;
 begin
     process(clk)
     begin
         if(rising_edge(clk)) then
             if(we = '1') then
-                ram(to_integer(unsigned(addr))) <= dado_in;
+                ram_s(to_integer(unsigned(addr((memoryAddrWidth + 1) DOWNTO 2)))) <= dado_in;
             end if;
         end if;
     end process;
-    dado_out <= ram(to_integer(unsigned(addr)));
+    dado_out <= ram_s(to_integer(unsigned(addr((memoryAddrWidth + 1) DOWNTO 2))));
 end architecture;

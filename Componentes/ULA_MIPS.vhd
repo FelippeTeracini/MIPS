@@ -13,7 +13,8 @@ entity ULA_MIPS is
 		instrucao : in std_logic_vector(5 downto 0);
 		
 		--- OUT ---
-		saida : out std_logic_vector(N-1 downto 0)
+		saida : out std_logic_vector(N-1 downto 0);
+		zero : out std_logic_vector(0 downto 0)
 	);
 	
 end ULA_MIPS;
@@ -39,7 +40,13 @@ begin
    resultado <= bi ;
   when "100010" => -- Subtracao
 	resultado <= ai - bi ;
-	when others => resultado <= 0 ; 
+  when "000000" => -- Comparacao   
+	if(ai = bi) then
+		zero(0) <= '0';
+	else
+		zero(0) <= '1' ;
+	end if;
+  when others => resultado <= 0 ; 
   end case;
  end process;
  saida <= std_logic_vector(to_unsigned(resultado, saida'length));
