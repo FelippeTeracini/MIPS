@@ -81,7 +81,7 @@ R17
 Aextensor_de_sinal_arch
 R6
 R7
-Z24 DEx4 work 29 extensor_de_sinal_vhd_vec_tst 0 22 :VgDT2X9;HEo2[P8Z:<ML2
+DEx4 work 29 extensor_de_sinal_vhd_vec_tst 0 22 :VgDT2X9;HEo2[P8Z:<ML2
 l44
 L33
 ViQ1m0j7QV7Rj?<A8ZJdi21
@@ -93,6 +93,143 @@ R12
 R21
 R22
 R23
+!i113 1
+R16
+R17
+Ehard_block
+Z24 w1572668813
+R2
+Z25 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 g8;l:a_bzlE?3R3d7zk3Z0
+R4
+R6
+R7
+Z26 DPx10 cycloneive 21 cycloneive_components 0 22 Yj^f[Ven<H;0LiK:6PWEg0
+Z27 dC:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim
+R9
+R10
+l0
+L34
+VOgIg9T_BR7joedFDVM>H13
+!s100 A`ID_i56<Ua56=ZD=[EG=2
+R11
+32
+Z28 !s110 1572668814
+!i10b 1
+Z29 !s108 1572668814.000000
+R14
+R15
+!i113 1
+R16
+R17
+Astructure
+R2
+R25
+R4
+R6
+R7
+R26
+DEx4 work 10 hard_block 0 22 OgIg9T_BR7joedFDVM>H13
+l64
+L50
+V`^CmQg<48W[ez[JL_5@Yn2
+!s100 2S?JL;LJ@<3:BHXTNcXS]3
+R11
+32
+R28
+!i10b 1
+R29
+R14
+R15
+!i113 1
+R16
+R17
+Etop_level_i
+R24
+R25
+R26
+R2
+Z30 DPx6 altera 11 dffeas_pack 0 22 :S1C`o89Vbe5bV6`:6CaB3
+R4
+R6
+R7
+Z31 DPx6 altera 28 altera_primitives_components 0 22 z?[99Tn<@QGNik3V1c6ah1
+R27
+R9
+R10
+l0
+L79
+V6GZ;Q@f?lNE[Y;Qn?D`DE1
+!s100 jH?b^jlm5=;1<fOS=YTo>3
+R11
+32
+R28
+!i10b 1
+R29
+R14
+R15
+!i113 1
+R16
+R17
+Astructure
+R25
+R26
+R2
+R30
+R4
+R6
+R7
+R31
+DEx4 work 11 top_level_i 0 22 6GZ;Q@f?lNE[Y;Qn?D`DE1
+l5523
+L310
+V;EDZWknFiPDlIa@AkQbiM2
+!s100 [c]maRnLhoF5>koEGD4[@0
+R11
+32
+!s110 1572668815
+!i10b 1
+R29
+R14
+R15
+!i113 1
+R16
+R17
+Etop_level_i_vhd_vec_tst
+Z32 w1572668811
+R6
+R7
+R27
+Z33 8Waveform1.vwf.vht
+Z34 FWaveform1.vwf.vht
+l0
+L31
+VJLT@>bKb8d5XY__B[E7hC2
+!s100 ^g:dG64R80ieXiS<k9mUK0
+R11
+32
+Z35 !s110 1572668816
+!i10b 1
+Z36 !s108 1572668816.000000
+Z37 !s90 -work|work|Waveform1.vwf.vht|
+Z38 !s107 Waveform1.vwf.vht|
+!i113 1
+R16
+R17
+Atop_level_i_arch
+R6
+R7
+Z39 DEx4 work 23 top_level_i_vhd_vec_tst 0 22 JLT@>bKb8d5XY__B[E7hC2
+l72
+L33
+Z40 VlBTDNN]_hhoFF3P8=LN`j2
+Z41 !s100 `bWGf?JIf<_bd?hN_G7X10
+R11
+32
+R35
+!i10b 1
+R36
+R37
+R38
 !i113 1
 R16
 R17

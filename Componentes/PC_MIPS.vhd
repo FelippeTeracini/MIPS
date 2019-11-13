@@ -13,7 +13,7 @@ entity PC_MIPS is
 			 reset_pc: in std_logic;
 			 Data : in std_logic_vector ((addrWidth-1) DOWNTO 0);
           Addr : out std_logic_vector (addrWidth-1 DOWNTO 0);
-			 OutSomador : out std_logic_vector ((addrWidth-1) DOWNTO 0)
+			 Out_Somador : out std_logic_vector ((addrWidth-1) DOWNTO 0)
     );
 end entity;
 
@@ -40,6 +40,6 @@ begin
 		);
 		
 	Addr <= outPC;
-	OutSomador <= outSomador;
+	Out_Somador <= outSomador;
 	 
 end architecture;

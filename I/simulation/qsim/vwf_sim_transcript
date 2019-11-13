@@ -1,18 +1,18 @@
 Determining the location of the ModelSim executable...
 
-Using: c:/intelfpga_lite/17.1/modelsim_ase/win32aloem/
+Using: c:/intelfpga_lite/18.1/modelsim_ase/win32aloem/
 
 To specify a ModelSim executable directory, select: Tools -> Options -> EDA Tool Options
 Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-Altera will be used.
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Instrucao_I -c Instrucao_I --vector_source="C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/Waveform.vwf" --testbench_file="C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/simulation/qsim/Waveform.vwf.vht"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Instrucao_I -c Instrucao_I --vector_source="C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Waveform1.vwf" --testbench_file="C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim/Waveform1.vwf.vht"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
-    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
     Info: Your use of Intel Corporation's design tools, logic functions 
     Info: and other software and tools, and its AMPP partner logic 
     Info: functions, and any output files from any of the foregoing 
@@ -25,22 +25,21 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Thu Oct 31 11:00:23 2019
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Instrucao_I -c Instrucao_I --vector_source=C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/Waveform.vwf --testbench_file=C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/simulation/qsim/Waveform.vwf.vht
+    Info: Processing started: Sat Nov 02 01:16:56 2019
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Instrucao_I -c Instrucao_I --vector_source="C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Waveform1.vwf" --testbench_file="C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim/Waveform1.vwf.vht"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
-01005): Ignoring output pin "saida[9]" in vector source file when writing test bench files
 
 Completed successfully. 
 
 **** Generating the functional simulation netlist ****
 
-quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/simulation/qsim/" Instrucao_I -c Instrucao_I
+quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim/" Instrucao_I -c Instrucao_I
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
-    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
     Info: Your use of Intel Corporation's design tools, logic functions 
     Info: and other software and tools, and its AMPP partner logic 
     Info: functions, and any output files from any of the foregoing 
@@ -53,13 +52,13 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Thu Oct 31 11:00:25 2019
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/simulation/qsim/ Instrucao_I -c Instrucao_I
+    Info: Processing started: Sat Nov 02 01:16:58 2019
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim/" Instrucao_I -c Instrucao_I
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file Instrucao_I.vho in folder "C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Instrucao_I.vho in folder "C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4725 megabytes
-    Info: Processing ended: Thu Oct 31 11:00:27 2019
+    Info: Peak virtual memory: 4652 megabytes
+    Info: Processing ended: Sat Nov 02 01:17:00 2019
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
@@ -67,15 +66,16 @@ Completed successfully.
 
 **** Generating the ModelSim .do script ****
 
-C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/simulation/qsim/Instrucao_I.do generated.
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim/Instrucao_I.do generated.
 
 Completed successfully. 
 
 **** Running the ModelSim simulation ****
 
-c:/intelfpga_lite/17.1/modelsim_ase/win32aloem//vsim -c -do Instrucao_I.do
+c:/intelfpga_lite/18.1/modelsim_ase/win32aloem//vsim -c -do Instrucao_I.do
 
-Reading C:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
+Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
 
 # 10.5b
 
@@ -83,65 +83,79 @@ Reading C:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
 
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:00:27 on Oct 31,2019
+# Start time: 01:17:01 on Nov 02,2019
 # vcom -work work Instrucao_I.vho 
 # -- Loading package STANDARD
+
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Loading package altera_lnsim_components
-
 # -- Loading package VITAL_Timing
 # -- Loading package VITAL_Primitives
-# -- Loading package cyclonev_atom_pack
-# -- Loading package cyclonev_components
-# -- Compiling entity extensor_de_sinal
-# -- Compiling architecture structure of extensor_de_sinal
-# End time: 11:00:28 on Oct 31,2019, Elapsed time: 0:00:01
+# -- Loading package cycloneive_atom_pack
+# -- Loading package cycloneive_components
+# -- Compiling entity hard_block
+# -- Compiling architecture structure of hard_block
+# -- Loading package dffeas_pack
+# -- Loading package altera_primitives_components
+# -- Compiling entity TOP_LEVEL_I
+# -- Compiling architecture structure of TOP_LEVEL_I
+
+# End time: 01:17:03 on Nov 02,2019, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:00:28 on Oct 31,2019
-# vcom -work work Waveform.vwf.vht 
-
+# Start time: 01:17:03 on Nov 02,2019
+# vcom -work work Waveform1.vwf.vht 
 # -- Loading package STANDARD
+
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity extensor_de_sinal_vhd_vec_tst
-# -- Compiling architecture extensor_de_sinal_arch of extensor_de_sinal_vhd_vec_tst
-# End time: 11:00:28 on Oct 31,2019, Elapsed time: 0:00:00
+# -- Compiling entity TOP_LEVEL_I_vhd_vec_tst
+# -- Compiling architecture TOP_LEVEL_I_arch of TOP_LEVEL_I_vhd_vec_tst
+# End time: 01:17:04 on Nov 02,2019, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 
-# vsim -novopt -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.extensor_de_sinal_vhd_vec_tst 
-# Start time: 11:00:28 on Oct 31,2019
+# vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.TOP_LEVEL_I_vhd_vec_tst 
+# Start time: 01:17:04 on Nov 02,2019
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
-# Loading work.extensor_de_sinal_vhd_vec_tst(extensor_de_sinal_arch)
-# Loading altera_lnsim.altera_lnsim_components
+# Loading work.top_level_i_vhd_vec_tst(top_level_i_arch)
 # Loading ieee.vital_timing(body)
 # Loading ieee.vital_primitives(body)
-# Loading cyclonev.cyclonev_atom_pack(body)
-# Loading cyclonev.cyclonev_components
-# Loading work.extensor_de_sinal(structure)
+# Loading altera.dffeas_pack
+# Loading altera.altera_primitives_components
+# Loading cycloneive.cycloneive_atom_pack(body)
+# Loading cycloneive.cycloneive_components
+# Loading work.top_level_i(structure)
+# Loading work.hard_block(structure)
 # Loading ieee.std_logic_arith(body)
-# Loading cyclonev.cyclonev_io_obuf(arch)
-# Loading cyclonev.cyclonev_io_ibuf(arch)
-# Loading cyclonev.cyclonev_lcell_comb(vital_lcell_comb)
-# after#32
+# Loading cycloneive.cycloneive_io_obuf(arch)
+# Loading cycloneive.cycloneive_io_ibuf(arch)
+# Loading cycloneive.cycloneive_clkctrl(vital_clkctrl)
+# Loading cycloneive.cycloneive_ena_reg(behave)
+# Loading cycloneive.cycloneive_lcell_comb(vital_lcell_comb)
+# Loading altera.dffeas(vital_dffeas)
+# ** Warning: Design size of 648778 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
 
-# End time: 11:00:28 on Oct 31,2019, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# after#35
+
+# Simulation time: 0 ps
+
+# End time: 01:17:10 on Nov 02,2019, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 1
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/Waveform.vwf...
+Reading C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Waveform1.vwf...
 
-Reading C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/simulation/qsim/Instrucao_I.msim.vcd...
+Reading C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim/Instrucao_I.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/I/simulation/qsim/Instrucao_I_20191031110029.sim.vwf
+Writing the resulting VWF to C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/simulation/qsim/Instrucao_I_20191102011715.sim.vwf
 
 Finished VCD to VWF conversion.
 

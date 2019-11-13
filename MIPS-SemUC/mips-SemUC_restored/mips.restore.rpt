@@ -1,6 +1,6 @@
 Restore Archived Project report for mips
-Wed Nov 06 08:48:01 2019
-Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Wed Nov 13 12:03:17 2019
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -17,7 +17,7 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2017  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -36,9 +36,9 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------+
 ; Restore Archived Project Summary                                        ;
 +---------------------------------+---------------------------------------+
-; Restore Archived Project Status ; Successful - Wed Nov 06 08:48:01 2019 ;
+; Restore Archived Project Status ; Successful - Wed Nov 13 12:03:17 2019 ;
 ; Revision Name                   ; mips                                  ;
-; Top-level Entity Name           ; mips                                  ;
+; Top-level Entity Name           ; fluxo_dados                           ;
 ; Family                          ; Cyclone IV E                          ;
 +---------------------------------+---------------------------------------+
 
@@ -46,18 +46,25 @@ refer to the applicable agreement for further details.
 +-----------------------------------+
 ; Restore Archived Project Messages ;
 +-----------------------------------+
-Info: Successfully restored 'C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/MIPS-SemUC/mips-SemUC.qar' into the 'C:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/' directory
+Info: Successfully restored 'C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC.qar' into the 'C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/' directory
 Info: Generated report 'mips.restore.rpt'
-Error (23031): Evaluation of Tcl script c:/intelfpga_lite/17.1/quartus/common/tcl/apps/qpm/qar.tcl unsuccessful
-Error: Quartus Prime Shell was unsuccessful. 3 errors, 0 warnings
-    Error: Peak virtual memory: 4825 megabytes
-    Error: Processing ended: Wed Nov 06 08:48:01 2019
-    Error: Elapsed time: 00:00:05
-    Error: Total CPU time (on all processors): 00:00:01
+Info (23030): Evaluation of Tcl script c:/intelfpga_lite/18.1/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 4830 megabytes
+    Info: Processing ended: Wed Nov 13 12:03:17 2019
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++----------------+
+; Files Restored ;
++----------------+
+; File Name      ;
++----------------+
 
 
 +--------------------------+
-; Files Restored           ;
+; Files Not Restored       ;
 +--------------------------+
 ; File Name                ;
 +--------------------------+
@@ -83,12 +90,5 @@ Error: Quartus Prime Shell was unsuccessful. 3 errors, 0 warnings
 ; somador.vhd              ;
 ; uc.vhd                   ;
 +--------------------------+
-
-
-+--------------------+
-; Files Not Restored ;
-+--------------------+
-; File Name          ;
-+--------------------+
 
 

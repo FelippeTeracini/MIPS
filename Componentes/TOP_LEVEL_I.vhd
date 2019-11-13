@@ -21,22 +21,25 @@ entity TOP_LEVEL_I is
 			 muxRT_RD        : in std_logic;
 			 muxRT_Imediato  : in std_logic;
 			 muxULA_RAM      : in std_logic;
+			 saidaMUX_BULA   : out std_logic_vector((dataWidth-1) downto 0);
 			 
 			 -- Banco de Registradores --
 			 escreveC        : in std_logic;
 			 
 			 -- ULA --
 			 Saida           : out std_logic_vector((dataWidth-1) downto 0);
-			 SaidaA1			: out std_logic_vector((dataWidth-1) downto 0);			
-			 SaidaB1			: out std_logic_vector((dataWidth-1) downto 0);
-			 SaidaROM         : out std_logic_vector((addrWidth-1) downto 0);
-			 SaidaFunct : out std_logic_vector(5 downto 0)
+			 SaidaA1			  : out std_logic_vector((dataWidth-1) downto 0);			
+			 SaidaB1			  : out std_logic_vector((dataWidth-1) downto 0);
+			 SaidaROM        : out std_logic_vector((addrWidth-1) downto 0);
+--			 SaidaFunct      : out std_logic_vector(5 downto 0);
+			 EntradaFunct    : in  std_logic_vector(5 downto 0);
 			 
 			 -- RAM --
 			 we              : in std_logic;
+			 saidaRAM        : out std_logic_vector((dataWidth-1) downto 0);
 			 
 			 -- UC --
-			 beq             : in std_logic;
+			 beq             : in std_logic
 			 
     );
 end entity;
@@ -44,7 +47,7 @@ end entity;
 architecture assincrona of TOP_LEVEL_I is
 
 	signal zero : std_logic_vector(0 downto 0);
-	signal funct: std_logic_vector(5 downto 0);
+--	signal funct: std_logic_vector(5 downto 0);
 	signal outMUX_END3 : std_logic_vector(4 downto 0);
 	signal outPC, outSomador, outSomadorExt, outMUX_PCIM: std_logic_vector(addrWidth-1 DOWNTO 0);
 	signal outROM, outExtensor, outLShift, outMUX_BULA, outULA, saidaABanco, saidaBBanco, outRAM, outMUX_ULARAM: std_logic_vector (dataWidth-1 DOWNTO 0);
@@ -62,7 +65,7 @@ begin
 			 reset_pc => reset_pc,
 			 Data => outMUX_PCIM,
           Addr => outPC,
-			 OutSomador => outSomador
+			 Out_Somador => outSomador
    );
 
 	ROM : entity work.ROM_MIPS 
@@ -109,7 +112,7 @@ begin
 	
 	Extensor : entity work.extensor_de_sinal
 	generic map(
-          larguraDados => dataWidth
+          larguraDados => dataWidth/2
    )
    port map(
           entrada => outROM(15 downto 0),
@@ -166,7 +169,7 @@ begin
 			 --- IN ---
 			 A => saidaABanco,
 			 B => outMUX_BULA,
-			 instrucao => funct,
+			 instrucao => EntradaFunct,
 				
 			 --- OUT ---
 			 saida => outULA,
@@ -180,7 +183,7 @@ begin
 			 memoryAddrWidth => memoryAddrWidth
 	)
 	port map(
-			 addr => outULA;
+			 addr => outULA,
 			 we => we,
 			 clk => Clk,
 			 dado_in => outMUX_BULA,
@@ -198,12 +201,14 @@ begin
 			 Y	=> outMUX_ULARAM
 	);
 	
-	funct <= outROM(5 downto 0);
-	
-	SaidaFunct <= funct;
+--	funct <= outROM(5 downto 0);
+--	
+--	SaidaFunct <= funct;
 	Saida <= outULA;
 	SaidaA1 <= saidaABanco;
 	SaidaB1 <= saidaBBanco;
 	SaidaROM <= outROM;
+	saidaRAM <= outRAM;
+	saidaMUX_BULA <= outMUX_BULA;
 	 
 end architecture;

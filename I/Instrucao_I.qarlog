@@ -1,0 +1,27 @@
+Quartus Prime Archive log --	C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Instrucao_I.qarlog
+
+Archive:	C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Instrucao_I.qar
+Date:		Sat Nov 02 01:27:36 2019
+Quartus Prime		18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/MUX.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/PC_MIPS.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/RAM_MIPS.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/ROM_MIPS.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/TOP_LEVEL_I.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/ULA_MIPS.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/bancoRegistradores_MIPS.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/extensor_de_sinal.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/left_shifter.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/registrador.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/Componentes/somadorGenerico.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Instrucao_I.qpf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Instrucao_I.qsf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Instrucao_I_assignment_defaults.qdf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Waveform.vwf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/I/Waveform1.vwf
+	======= Total: 16 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

@@ -54,16 +54,16 @@ architecture estrutural of fluxo_dados is
     signal ULActr : std_logic_vector(CTRL_ALU_WIDTH-1 downto 0);
 
     -- Codigos da palavra de controle:
-    alias ULAop             : std_logic_vector(ALU_OP_WIDTH-1 downto 0) is pontosDeControle(10 downto 8);
-    alias escreve_RC        : std_logic is pontosDeControle(7);
-    alias escreve_RAM       : std_logic is pontosDeControle(6);
-    alias leitura_RAM       : std_logic is pontosDeControle(5);
-    alias sel_mux_ula_mem   : std_logic is pontosDeControle(4);
-    alias sel_mux_rd_rt     : std_logic is pontosDeControle(3);
-    alias sel_mux_banco_ula : std_logic is pontosDeControle(2);
-    alias sel_beq           : std_logic is pontosDeControle(1);
-    alias sel_mux_jump      : std_logic is pontosDeControle(0);
-
+	 alias sel_mux_jump      : std_logic is pontosDeControle(10);
+	 alias sel_mux_rd_rt     : std_logic is pontosDeControle(9);
+	 alias escreve_RC        : std_logic is pontosDeControle(8);
+	 alias sel_mux_banco_ula : std_logic is pontosDeControle(7);
+	 alias sel_mux_ula_mem   : std_logic is pontosDeControle(6);
+	 alias sel_beq           : std_logic is pontosDeControle(5);
+	 alias leitura_RAM       : std_logic is pontosDeControle(4);
+	 alias escreve_RAM       : std_logic is pontosDeControle(3);
+	 alias ULAop             : std_logic_vector(ALU_OP_WIDTH-1 downto 0) is pontosDeControle(2 downto 0);
+	 
     -- Parsing da instrucao
     alias RS_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is instrucao_s(25 downto 21);
     alias RT_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is instrucao_s(20 downto 16);
