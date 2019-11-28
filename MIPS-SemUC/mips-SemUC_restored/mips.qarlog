@@ -1,0 +1,33 @@
+Quartus Prime Archive log --	C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/mips.qarlog
+
+Archive:	C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/mips.qar
+Date:		Fri Nov 15 16:20:08 2019
+Quartus Prime		18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/ROM.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/Registrador.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/UC_ULA.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/ULA.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/Waveform.vwf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/assignment_defaults.qdf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/bancoRegistradores.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/clock_generator.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/constantesMIPS.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/estendeSinalGenerico.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/fluxo_dados.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/mips.qpf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/mips.qsf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/mips.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/mips_assignment_defaults.qdf
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/muxGenerico2.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/shift2.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/shift2_imediato.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/single_port_RAM.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/soma4.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/somador.vhd
+C:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/uc.vhd
+	======= Total: 22 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

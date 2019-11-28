@@ -14,7 +14,9 @@ entity fluxo_dados is
     (
         clk			            : IN STD_LOGIC;
         pontosDeControle        : IN STD_LOGIC_VECTOR(CONTROLWORD_WIDTH-1 DOWNTO 0);
-        instrucao               : OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0)
+        instrucao               : OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
+		  saidaPC               : OUT std_logic_vector(DATA_WIDTH-1 downto 0);
+		  saidaULA              : OUT std_logic_vector(DATA_WIDTH-1 downto 0)
     );
 end entity;
 
@@ -79,6 +81,9 @@ begin
 
     -- Ajuste do PC para jump (concatena com imediato multiplicado por 4)
     PC_4_concat_imed <= PC_mais_4(31 downto 28) & saida_shift_jump;
+	 
+	 saidaPC <= PC_s;
+	 saidaULA <= saida_ula;
 
     -- Banco de registradores
      BR: entity work.bancoRegistradores 
@@ -261,5 +266,7 @@ begin
             seletor  => sel_mux_jump,
             saida    => saida_mux_jump
         );
+		  
+	
 
 end architecture;
