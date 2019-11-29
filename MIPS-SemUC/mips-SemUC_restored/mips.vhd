@@ -9,9 +9,11 @@ use work.constantesMIPS.all;
 entity mips is
 	port
     (
-        clk			            : IN  STD_LOGIC;
+--        clk			            : IN  STD_LOGIC;
+		  KEY                   : IN std_logic_vector(0 downto 0);
 		  PC_out                : OUT std_logic_vector(DATA_WIDTH-1 downto 0);
-		  ULA_out               : OUT std_logic_vector(DATA_WIDTH-1 downto 0)
+		  ULA_out               : OUT std_logic_vector(DATA_WIDTH-1 downto 0);
+		  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7 : OUT STD_LOGIC_VECTOR(6 downto 0)
 		  
     );
 end entity;
@@ -19,15 +21,14 @@ end entity;
 architecture estrutural of mips is
 
 	-- Declaração de sinais auxiliares
-    signal pontosDeControle     : STD_LOGIC_VECTOR(CONTROLWORD_WIDTH-1 DOWNTO 0);
-    signal instrucao            : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
     signal ALUop                : STD_LOGIC_VECTOR(ALU_OP_WIDTH-1 DOWNTO 0);
     signal ALUctr               : STD_LOGIC_VECTOR(CTRL_ALU_WIDTH-1 DOWNTO 0);
+	 
+	 signal PC_out_signal               : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
+	 signal ULA_out_signal              : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
 
     -- Sinal de clock auxiliar para simulação
     -- signal clk  : STD_LOGIC;
-
-    alias opcode : std_logic_vector(OPCODE_WIDTH-1 downto 0) is instrucao(31 DOWNTO 26);
 begin
 
     -- CLOCK generator auxiliar para simulação
@@ -36,18 +37,68 @@ begin
     FD : entity work.fluxo_dados 
 	port map
 	(
-        clk	                    => clk,
-        pontosDeControle        => pontosDeControle,
-        instrucao               => instrucao,
-		  saidaPC                 => PC_out,
-		  saidaULA                => ULA_out
+        clk	                    => KEY(0),
+		  saidaPC                 => PC_out_signal,
+		  saidaULA                => ULA_out_signal
     );
-
-    UC : entity work.uc 
-	port map
-	(
-        opcode              	=> opcode,
-        pontosDeControle    	=> pontosDeControle
-    );
+	 
+	H0: entity work.conversorHex7Seg 
+	port map(
+		dadoHex => ULA_out_signal(3 downto 0),
+--   		apaga   => SW(17),
+		saida7seg => HEX0
+	);
+	 
+	H1: entity work.conversorHex7Seg 
+	port map(
+		dadoHex => ULA_out_signal(7 downto 4),
+--   		apaga   => SW(17),
+		saida7seg => HEX1
+	);
+	
+	H2: entity work.conversorHex7Seg 
+	port map(
+		dadoHex => ULA_out_signal(11 downto 8),
+--   		apaga   => SW(17),
+		saida7seg => HEX2
+	);
+	
+	H3: entity work.conversorHex7Seg 
+	port map(
+		dadoHex => ULA_out_signal(15 downto 12),
+--   		apaga   => SW(17),
+		saida7seg => HEX3
+	);
+	
+	H4: entity work.conversorHex7Seg 
+	port map(
+		dadoHex => ULA_out_signal(19 downto 16),
+--   		apaga   => SW(17),
+		saida7seg => HEX4
+	);
+	
+	H5: entity work.conversorHex7Seg 
+	port map(
+		dadoHex => ULA_out_signal(23 downto 20),
+--   		apaga   => SW(17),
+		saida7seg => HEX5
+	);
+	
+	H6: entity work.conversorHex7Seg 
+	port map(
+		dadoHex => PC_out_signal(3 downto 0),
+--   		apaga   => SW(17),
+		saida7seg => HEX6
+	);
+	
+	H7: entity work.conversorHex7Seg 
+	port map(
+		dadoHex => PC_out_signal(7 downto 4),
+--   		apaga   => SW(17),
+		saida7seg => HEX7
+	);
+	
+	PC_out <= PC_out_signal;
+	ULA_out <= ULA_out_signal;
 
 end architecture;

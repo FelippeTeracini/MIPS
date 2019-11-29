@@ -13,8 +13,6 @@ entity fluxo_dados is
 	port
     (
         clk			            : IN STD_LOGIC;
-        pontosDeControle        : IN STD_LOGIC_VECTOR(CONTROLWORD_WIDTH-1 DOWNTO 0);
-        instrucao               : OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
 		  saidaPC               : OUT std_logic_vector(DATA_WIDTH-1 downto 0);
 		  saidaULA              : OUT std_logic_vector(DATA_WIDTH-1 downto 0)
     );
@@ -23,6 +21,9 @@ end entity;
 architecture estrutural of fluxo_dados is
 
     -- Declaração de sinais auxiliares
+	 
+	 -- UC --
+	 signal pontosDeControle     : STD_LOGIC_VECTOR(CONTROLWORD_WIDTH-1 DOWNTO 0);
     
     -- Sinais auxiliar da instrução
     signal instrucao_s : std_logic_vector(DATA_WIDTH-1 downto 0);
@@ -67,17 +68,132 @@ architecture estrutural of fluxo_dados is
 	 alias ULAop             : std_logic_vector(ALU_OP_WIDTH-1 downto 0) is pontosDeControle(2 downto 0);
 	 
     -- Parsing da instrucao
-    alias RS_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is instrucao_s(25 downto 21);
     alias RT_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is instrucao_s(20 downto 16);
     alias RD_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is instrucao_s(15 downto 11);
     alias funct     : std_logic_vector(FUNCT_WIDTH-1 downto 0) is  instrucao_s(5 DOWNTO 0);
-    alias imediato  : std_logic_vector(15 downto 0) is instrucao_s(15 downto 0);
+	 
+	 -- Registrador 1 --
+	 signal saida_r1    : std_logic_vector(63 downto 0);
+	 
+	 alias saida_add_r1 : std_logic_vector(31 downto 0)  is saida_r1(63 downto 32);
+	 alias sl2_PC_r1    : std_logic_vector(25 downto 0)  is saida_r1(25 downto 0);
+	 
+	 alias opcode_r1    : std_logic_vector(5 downto 0)   is saida_r1(31 downto 26);
+	 alias reg1_r1      : std_logic_vector(4 downto 0)   is saida_r1(25 downto 21);
+	 alias reg2_r1      : std_logic_vector(4 downto 0)   is saida_r1(20 downto 16);
+	 alias sigext_r1    : std_logic_vector(15 downto 0)  is saida_r1(15 downto 0);
+	 alias rt_r1        : std_logic_vector(4 downto 0)   is saida_r1(20 downto 16);
+	 alias rd_r1        : std_logic_vector(4 downto 0)   is saida_r1(15 downto 11);
+	 
+	 -- Registrador 2 --
+	 signal saida_r2      : std_logic_vector(147 downto 0);
+	 
+	 alias wb_r2          : std_logic_vector(1 downto 0)  is saida_r2(147 downto 146);
+	 alias M_r2           : std_logic_vector(2 downto 0)  is saida_r2(145 downto 143);
+	 
+	 alias reg_dst_r2     : std_logic                     is saida_r2(142);
+	 alias alu_op_r2      : std_logic_vector(2 downto 0)  is saida_r2(141 downto 139);
+	 alias mux_alu_sel_r2 : std_logic                     is saida_r2(138);
+	 
+	 alias rd_r2          : std_logic_vector(4 downto 0)  is saida_r2(4 downto 0);
+	 alias rt_r2          : std_logic_vector(4 downto 0)  is saida_r2(9 downto 5);
+	 alias alu_ctrl_r2    : std_logic_vector(5 downto 0)  is saida_r2(15 downto 10);
+	 alias mux0_alu_r2    : std_logic_vector(31 downto 0) is saida_r2(73 downto 42);
+	 alias sl2_r2         : std_logic_vector(31 downto 0) is saida_r2(41 downto 10);
+	 alias wr_data_r2     : std_logic_vector(31 downto 0) is saida_r2(73 downto 42);
+	 alias alu_r2         : std_logic_vector(31 downto 0) is saida_r2(105 downto 74);
+	 alias add_r2         : std_logic_vector(31 downto 0) is saida_r2(137 downto 106);
+	 alias mux1_alu_r2    : std_logic_vector(31 downto 0) is saida_r2(41 downto 10);
+	 
+	 -- Registrador 3 --
+	 signal saida_r3       : std_logic_vector(106 downto 0);
+	 
+	 alias wb_r3           : std_logic_vector(1 downto 0)  is saida_r3(106 downto 105);
+	 
+	 alias branch_r3       : std_logic                     is saida_r3(104);
+	 alias mem_read_r3     : std_logic                     is saida_r3(103);
+	 alias mem_write_r3    : std_logic                     is saida_r3(102);
+
+	 alias branch2_r3      : std_logic                     is saida_r3(69);
+	 alias mux_PC1_r3      : std_logic_vector(31 downto 0) is saida_r3(101 downto 70);
+	 alias address_r3      : std_logic_vector(31 downto 0) is saida_r3(68 downto 37);
+	 alias mux_ula_mem0_r3 : std_logic_vector(31 downto 0) is saida_r3(68 downto 37);
+	 alias wr_data_r3      : std_logic_vector(31 downto 0) is saida_r3(36 downto 5);
+	 alias rd_r3           : std_logic_vector(4 downto 0)  is saida_r3(4 downto 0);
+	 
+	 -- Registrador 4 --
+	 signal saida_r4       : std_logic_vector(70 downto 0);
+	 
+	 alias reg_write_r4    : std_logic                     is saida_r4(70);
+	 alias mem_to_reg      : std_logic                     is saida_r4(69);
+
+	 alias mux_ula_mem1_r4 : std_logic_vector(31 downto 0) is saida_r4(68 downto 37);
+	 alias mux_ula_mem0_r4 : std_logic_vector(31 downto 0) is saida_r4(36 downto 5);
+	 alias rd_r4           : std_logic_vector(4 downto 0)  is saida_r4(4 downto 0);
+	 
 
 begin
 
-    instrucao <= instrucao_s;
-
-    sel_mux_beq <= sel_beq AND Z_out;
+	-- Registrador 1 --
+	REG_1 : entity work.Registrador
+		generic map(
+			NUM_BITS => 64
+		)
+		port map(
+			clk => clk,
+			enable => '1',
+			reset => '1',
+			data_in => PC_mais_4 & instrucao_s,
+			data_out => saida_r1
+		);
+		
+	-- Registrador 2 --
+	REG_2 : entity work.Registrador
+		generic map(
+			NUM_BITS => 148
+		)
+		port map(
+			clk => clk,
+			enable => '1',
+			reset => '1',
+			data_in => escreve_RC & sel_mux_ula_mem & sel_beq & leitura_RAM & escreve_RAM & sel_mux_rd_rt & ULAop & sel_mux_banco_ula & saida_add_r1 & RA & RB & sinal_ext & rt_r1 & rd_r1,
+			data_out => saida_r2
+		);
+		
+	-- Registrador 3 --
+	REG_3 : entity work.Registrador
+		generic map(
+			NUM_BITS => 107
+		)
+		port map(
+			clk => clk,
+			enable => '1',
+			reset => '1',
+			data_in => wb_r2 & M_r2 & PC_mais_4_mais_imediato & Z_out & saida_ula & wr_data_r2 & saida_mux_rd_rt,
+			data_out => saida_r3
+		);
+		
+	-- Registrador 4 --
+	REG_4 : entity work.Registrador
+		generic map(
+			NUM_BITS => 71
+		)
+		port map(
+			clk => clk,
+			enable => '1',
+			reset => '1',
+			data_in => wb_r3 & dado_lido_mem & mux_ula_mem0_r3 & rd_r3,
+			data_out => saida_r4
+		);
+		
+	-- UC --
+	UC : entity work.uc 
+		port map(
+        opcode              	=> opcode_r1,
+        pontosDeControle    	=> pontosDeControle
+		);
+	
+    sel_mux_beq <= branch_r3 AND branch2_r3;
 
     -- Ajuste do PC para jump (concatena com imediato multiplicado por 4)
     PC_4_concat_imed <= PC_mais_4(31 downto 28) & saida_shift_jump;
@@ -92,12 +208,12 @@ begin
             larguraEndBancoRegs => 5
         )
         port map (
-            enderecoA => RS_addr,
-            enderecoB => RT_addr,
-            enderecoC => saida_mux_rd_rt,
+            enderecoA => reg1_r1,
+            enderecoB => reg2_r1,
+            enderecoC => rd_r4,
             clk          => clk,
             dadoEscritaC => saida_mux_ula_mem, 
-            escreveC     => escreve_RC,
+            escreveC     => reg_write_r4,
             saidaA       => RA,
             saidaB       => RB
         );
@@ -108,7 +224,7 @@ begin
             NUM_BITS => DATA_WIDTH
         )
 		port map (
-            A   => RA,
+            A   => alu_r2,
             B   => saida_mux_banco_ula,
             ctr => ULActr,
             C   => saida_ula,
@@ -118,8 +234,8 @@ begin
     UCULA : entity work.uc_ula 
         port map
         (
-            funct  => funct,
-            ALUop  => ULAop,
+            funct  => alu_ctrl_r2,
+            ALUop  => alu_op_r2,
             ALUctr => ULActr
         );
      
@@ -141,8 +257,8 @@ begin
             larguraDados => DATA_WIDTH
         )
 		port map (
-            entradaA => entrada_somador_beq,
-            entradaB => PC_mais_4,
+				entradaA => add_r2,
+            entradaB => entrada_somador_beq,
             saida    => PC_mais_4_mais_imediato
         );
     
@@ -173,11 +289,11 @@ begin
             addrWidth => ADDR_WIDTH
         )
 		port map (
-            endereco    => saida_ula, 
-            we          => escreve_RAM,
-            re          => leitura_RAM,
+            endereco    => address_r3, 
+            we          => mem_write_r3,
+            re          => mem_read_r3,
             clk         => clk,
-            dado_write  => RB,
+            dado_write  => wr_data_r3,
             dado_read   => dado_lido_mem
         ); 
 
@@ -188,7 +304,7 @@ begin
             larguraDadoSaida   => DATA_WIDTH
         )
 		port map (
-            estendeSinal_IN  => imediato,
+            estendeSinal_IN  => sigext_r1,
             estendeSinal_OUT => sinal_ext 
         ); 
 
@@ -197,7 +313,7 @@ begin
             larguraDado => DATA_WIDTH
         )
 		port map (
-            shift_IN  => sinal_ext,
+            shift_IN  => sl2_r2,
             shift_OUT => entrada_somador_beq
         );
     
@@ -207,7 +323,7 @@ begin
             larguraDado => 26
         )
 		port map (
-            shift_IN  => instrucao_s(25 downto 0),
+            shift_IN  => sl2_PC_r1,
             shift_OUT => saida_shift_jump
         );
     
@@ -217,9 +333,9 @@ begin
             larguraDados => DATA_WIDTH
         )
 		port map (
-            entradaA => saida_ula, 
-            entradaB => dado_lido_mem, 
-            seletor  => sel_mux_ula_mem,
+            entradaA => mux_ula_mem0_r4, 
+            entradaB => mux_ula_mem1_r4, 
+            seletor  => mem_to_reg,
             saida    => saida_mux_ula_mem
         );
 	 
@@ -228,9 +344,9 @@ begin
             larguraDados => REGBANK_ADDR_WIDTH
         )
 		port map (
-            entradaA => RT_addr, 
-            entradaB => RD_addr,
-            seletor  => sel_mux_rd_rt,
+            entradaA => rt_r2, 
+            entradaB => rd_r2,
+            seletor  => reg_dst_r2,
             saida    => saida_mux_rd_rt
         );
 	
@@ -239,9 +355,9 @@ begin
             larguraDados => DATA_WIDTH
         )
 		port map (
-            entradaA => RB, 
-            entradaB => sinal_ext,  
-            seletor  => sel_mux_banco_ula,
+            entradaA => mux0_alu_r2, 
+            entradaB => mux1_alu_r2,  
+            seletor  => mux_alu_sel_r2,
             saida    => saida_mux_banco_ula
         );
 		
@@ -251,7 +367,7 @@ begin
         )
 		port map (
             entradaA => PC_mais_4,
-            entradaB => PC_mais_4_mais_imediato,
+            entradaB => mux_PC1_r3,
             seletor  => sel_mux_beq,
             saida    => saida_mux_beq
         );

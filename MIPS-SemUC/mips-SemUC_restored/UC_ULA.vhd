@@ -25,7 +25,7 @@ begin
 					 "0110" when ALUop = "010" AND funct(3 downto 0) = "0010" else
 					 "0000" when ALUop = "010" AND funct(3 downto 0) = "0100" else
 					 "0001" when ALUop = "010" AND funct(3 downto 0) = "0101" else
-					 "0111" when ALUop = "010" AND funct(3 downto 0) = "1010";
+					 "0111" when ALUop = "010" AND funct(3 downto 0) = "1010" else "0000";
 
 
 

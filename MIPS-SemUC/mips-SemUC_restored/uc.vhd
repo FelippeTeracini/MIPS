@@ -20,6 +20,7 @@ begin
 					         "00111010000" when opcode = "100011" else
 								"00010001000" when opcode = "101011" else
 								"00000100001" when opcode = "000100" else
-								"10000000000" when opcode = "000010";
+								"10000000000" when opcode = "000010" else
+								"00000000000";
 
 end bhv;
