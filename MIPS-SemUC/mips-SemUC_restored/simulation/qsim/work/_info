@@ -7,16 +7,16 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/simulation/qsim
+dC:/Users/Guilherme-Blade/Documents/Insper/Design de Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/simulation/qsim
 Ehard_block
-Z1 w1573845077
-Z2 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
-Z3 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 g8;l:a_bzlE?3R3d7zk3Z0
-Z4 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
-Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z6 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z7 DPx10 cycloneive 21 cycloneive_components 0 22 Yj^f[Ven<H;0LiK:6PWEg0
-R0
+Z0 w1575389571
+Z1 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z2 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 N5CzKW88F^ShIK@<7Vek12
+Z3 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z6 DPx10 cycloneive 21 cycloneive_components 0 22 K8IbX`K5[Y1gJUKg2X_071
+Z7 dC:/Users/Felippe/Documents/Insper/Semestre-6/Design_de_Computadores/MIPS/MIPS-SemUC/mips-SemUC_restored/simulation/qsim
 Z8 8mips.vho
 Z9 Fmips.vho
 l0
@@ -25,26 +25,26 @@ VOgIg9T_BR7joedFDVM>H13
 !s100 A`ID_i56<Ua56=ZD=[EG=2
 Z10 OV;C;10.5b;63
 32
-Z11 !s110 1573845079
+Z11 !s110 1575389572
 !i10b 1
-Z12 !s108 1573845079.000000
+Z12 !s108 1575389572.000000
 Z13 !s90 -work|work|mips.vho|
 Z14 !s107 mips.vho|
 !i113 1
 Z15 o-work work
 Z16 tExplicit 1 CvgOpt 0
 Astructure
+R1
 R2
 R3
 R4
 R5
 R6
-R7
 DEx4 work 10 hard_block 0 22 OgIg9T_BR7joedFDVM>H13
-l64
-L50
-V`^CmQg<48W[ez[JL_5@Yn2
-!s100 2S?JL;LJ@<3:BHXTNcXS]3
+l63
+L49
+VUYQiVeN8LEDb;OF10NKim3
+!s100 SCKlHe`JiNVjD>gU8NlmR0
 R10
 32
 R11
@@ -56,22 +56,22 @@ R14
 R15
 R16
 Emips
-R1
-R3
-R7
+R0
 R2
-Z17 DPx6 altera 11 dffeas_pack 0 22 :S1C`o89Vbe5bV6`:6CaB3
+R6
+R1
+Z17 DPx6 altera 11 dffeas_pack 0 22 ?bDUB9Db2N8iCCALNL;CT3
+R3
 R4
 R5
-R6
-Z18 DPx6 altera 28 altera_primitives_components 0 22 z?[99Tn<@QGNik3V1c6ah1
-R0
+Z18 DPx6 altera 28 altera_primitives_components 0 22 c]VUMXSEi8Z`KM1bem<:B3
+R7
 R8
 R9
 l0
-L79
-Ve:mSjdQR=6Hg8iNC1_5I;1
-!s100 BJ4FcmN<4NUFD7[i1S?WP2
+L78
+Ve<B3=B]kmag1XLmQ^6;3?2
+!s100 <@FO74ImONiYFomglGQR?0
 R10
 32
 R11
@@ -83,22 +83,22 @@ R14
 R15
 R16
 Astructure
-R3
-R7
 R2
+R6
+R1
 R17
+R3
 R4
 R5
-R6
 R18
-DEx4 work 4 mips 0 22 e:mSjdQR=6Hg8iNC1_5I;1
-l5813
-L155
-V:X^0oP_R>IODWd105jHdK3
-!s100 B[=ocYZBoLiGjPGYX6Q_c3
+DEx4 work 4 mips 0 22 e<B3=B]kmag1XLmQ^6;3?2
+l1341
+L220
+V8X9zYhoA89XNGCPP<aX_O0
+!s100 G[ZLkh_iTH;_6Rf[z_kAR2
 R10
 32
-!s110 1573845080
+R11
 !i10b 1
 R12
 R13
@@ -107,34 +107,34 @@ R14
 R15
 R16
 Emips_vhd_vec_tst
-Z19 w1573845075
+Z19 w1575389569
+R4
 R5
-R6
-R0
-Z20 8Waveform.vwf.vht
-Z21 FWaveform.vwf.vht
+R7
+Z20 8Waveform6.vwf.vht
+Z21 FWaveform6.vwf.vht
 l0
 L31
 V9DlO:XLN`VbaHK^H76nVA3
 !s100 H7f7B9Gbj_T4GFE4m1]5D2
 R10
 32
-Z22 !s110 1573845081
+Z22 !s110 1575389573
 !i10b 1
-Z23 !s108 1573845081.000000
-Z24 !s90 -work|work|Waveform.vwf.vht|
-Z25 !s107 Waveform.vwf.vht|
+Z23 !s108 1575389573.000000
+Z24 !s90 -work|work|Waveform6.vwf.vht|
+Z25 !s107 Waveform6.vwf.vht|
 !i113 1
 R15
 R16
 Amips_arch
+R4
 R5
-R6
-DEx4 work 16 mips_vhd_vec_tst 0 22 9DlO:XLN`VbaHK^H76nVA3
-l46
+Z26 DEx4 work 16 mips_vhd_vec_tst 0 22 9DlO:XLN`VbaHK^H76nVA3
+l64
 L33
-VN]D5OOWW3MS];DD3zh<1V2
-!s100 DL<G@aSO`6?WUEke2ZZ`F3
+Z27 V>dBd`hVa>zko?z=^g8JbN3
+Z28 !s100 J03Nc@Y^d?mFcc5^zCoD=3
 R10
 32
 R22

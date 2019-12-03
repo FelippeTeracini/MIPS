@@ -9,8 +9,9 @@ use work.constantesMIPS.all;
 entity mips is
 	port
     (
---        clk			            : IN  STD_LOGIC;
-		  KEY                   : IN std_logic_vector(0 downto 0);
+--		  clk                   : IN STD_LOGIC;
+        CLOCK_50			      : IN  STD_LOGIC;
+		  KEY                   : IN std_logic_vector(3 downto 2);
 		  PC_out                : OUT std_logic_vector(DATA_WIDTH-1 downto 0);
 		  ULA_out               : OUT std_logic_vector(DATA_WIDTH-1 downto 0);
 		  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7 : OUT STD_LOGIC_VECTOR(6 downto 0)
@@ -26,6 +27,9 @@ architecture estrutural of mips is
 	 
 	 signal PC_out_signal               : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
 	 signal ULA_out_signal              : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
+    signal auxReset : std_logic;
+	 
+	 signal saida_r1              : STD_LOGIC_VECTOR(0 downto 0);
 
     -- Sinal de clock auxiliar para simulação
     -- signal clk  : STD_LOGIC;
@@ -33,11 +37,26 @@ begin
 
     -- CLOCK generator auxiliar para simulação
     -- CG : entity work.clock_generator port map (clk	=> clk);
+	 
+	 -- Registrador 1 --
+	REG_1 : entity work.Registrador
+		generic map(
+			NUM_BITS => 1
+		)
+		port map(
+			clk => (not KEY(3)),
+			enable => '1',
+			reset => (not KEY(2)),
+			data_in => "1",
+			data_out => saida_r1
+		);
+	 
+   detectorSub0: work.edgeDetector(bordaSubida) port map (clk => CLOCK_50, entrada => (saida_r1(0)), saida => auxReset);
 
     FD : entity work.fluxo_dados 
 	port map
 	(
-        clk	                    => KEY(0),
+        clk	                    => auxReset,--KEY(0),
 		  saidaPC                 => PC_out_signal,
 		  saidaULA                => ULA_out_signal
     );
